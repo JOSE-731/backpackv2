@@ -29,6 +29,6 @@ class Contactos extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('contactos');
     }
 }

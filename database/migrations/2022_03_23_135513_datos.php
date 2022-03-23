@@ -17,7 +17,7 @@ class Datos extends Migration
      
             $table->id();
             $table->string('dato');
-            $table->integer('autor');
+            $table->string('autor');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class Datos extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('datos');
     }
 }
