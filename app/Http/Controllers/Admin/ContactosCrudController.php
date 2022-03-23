@@ -39,11 +39,12 @@ class ContactosCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        //Mostramos los campos que queremos que salgan en la tabla
         CRUD::column('id');
         CRUD::column('nombre');
         CRUD::column('numero');
         CRUD::column('created_at');
-        CRUD::column('updated_at');
+       // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -62,11 +63,11 @@ class ContactosCrudController extends CrudController
     {
         CRUD::setValidation(ContactosRequest::class);
 
-        CRUD::field('id');
+        //Mostramos los campos que, queremos que salgan en el formulario
         CRUD::field('nombre');
         CRUD::field('numero');
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        //CRUD::field('created_at');
+        //CRUD::field('updated_at');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
