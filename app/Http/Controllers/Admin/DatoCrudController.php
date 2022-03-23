@@ -29,8 +29,8 @@ class DatoCrudController extends CrudController
         CRUD::setModel(\App\Models\Dato::class);
 
         //Se puede cambiar el prefijo de la ruta y el nombre de la misma, en la ruta de /config/backpack/base.php
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/dato');
-        CRUD::setEntityNameStrings('dato', 'datos');
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/datos');
+        CRUD::setEntityNameStrings('datos', 'datos');
     }
 
     /**
