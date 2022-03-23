@@ -13,7 +13,13 @@ class Datos extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('datos', function (Blueprint $table) {
+     
+            $table->id();
+            $table->string('dato');
+            $table->integer('autor');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class Datos extends Migration
      */
     public function down()
     {
-        //
+        
     }
 }
