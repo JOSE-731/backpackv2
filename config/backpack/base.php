@@ -174,6 +174,8 @@ return [
 
     // The prefix used in all base routes (the 'admin' in admin/dashboard)
     // You can make sure all your URLs use this prefix by using the backpack_url() helper instead of url()
+    
+    //Aca es donde se cambia el prefijo    
     'route_prefix' => 'admin',
 
     // The web middleware (group) used in all base & CRUD routes
