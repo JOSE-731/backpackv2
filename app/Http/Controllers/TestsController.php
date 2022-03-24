@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tests;
 use Illuminate\Http\Request;
 
 class TestsController extends Controller
@@ -9,10 +10,12 @@ class TestsController extends Controller
     
     public function index(){
 
-        $data = "tests";
+        $data = Tests::all();
 
-        return view('pages.test');
+        return view('pages.test', compact('data'));
 
     }
+
+    
 
 }
