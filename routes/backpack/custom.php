@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactosCrudController;
+use App\Http\Controllers\Admin\DatoCrudController;
+use App\Http\Controllers\TestsController;
 use Illuminate\Support\Facades\Route;
 
 // --------------------------
@@ -18,4 +21,5 @@ Route::group([
 ], function () { // custom admin routes
     Route::crud('contactos', 'ContactosCrudController');
     Route::crud('datos', 'DatoCrudController');
+    Route::get('tests', [TestsController::class,'index']);
 }); // this should be the absolute last line of this file
