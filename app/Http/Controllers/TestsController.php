@@ -10,9 +10,9 @@ class TestsController extends Controller
     
     public function index(){
 
-        $data = Tests::all();
+      
 
-        return view('pages.test', compact('data'));
+        return view('pages.test');
 
     }
 
