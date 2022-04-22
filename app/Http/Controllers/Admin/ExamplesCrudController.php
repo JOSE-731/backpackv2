@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ContactosRequest;
+use App\Http\Requests\ExamplesRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ContactosCrudController
+ * Class ExamplesCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ContactosCrudController extends CrudController
+class ExamplesCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation { show as traitShow; }
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -27,12 +26,10 @@ class ContactosCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Contactos::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/contactos');
-        CRUD::setEntityNameStrings('contactos', 'contactos');
-
-        $this->crud->allowAccess(['list', 'create', 'delete']);
-  }
+        CRUD::setModel(\App\Models\Examples::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/examples');
+        CRUD::setEntityNameStrings('examples', 'examples');
+    }
 
     /**
      * Define what happens when the List operation is loaded.
@@ -42,29 +39,11 @@ class ContactosCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        //Mostramos los campos que queremos que salgan en la tabla
-      //  CRUD::column('id');
-
-
-
-      CRUD::column('nombre');
-     // CRUD::column('numero');
-      CRUD::column('created_at');
-
-      $this->crud->addColumn([
-        'name'        => 'numero',
-        'label'       => 'Title',
-        'searchLogic' => function ($query, $column, $searchTerm) {
-            $query->orWhere('numero', 'like', '%'.$searchTerm.'%');
-        }
-    ]);
-
-     //$this->crud->orderBy('nombre');
-     //$this->crud->addClause('where', 'nombre', '=', 'zz');
-     //$this->crud->addClause('where', 'id', '>', '2');
-
-
-
+        CRUD::column('id');
+        CRUD::column('imagen');
+        CRUD::column('nombre');
+        CRUD::column('created_at');
+        CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -79,15 +58,22 @@ class ContactosCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
+
+
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ContactosRequest::class);
+        CRUD::setValidation(ExamplesRequest::class);
 
-        //Mostramos los campos que, queremos que salgan en el formulario
+        CRUD::field('id');
         CRUD::field('nombre');
-        CRUD::field('numero');
-        //CRUD::field('created_at');
-        //CRUD::field('updated_at');
+        $this->crud->addField([
+            'name' => 'image',
+            'label' => 'Image',
+            'type' => 'upload',
+            'upload' => true
+        ]);
+
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -106,15 +92,4 @@ class ContactosCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
-
-
-    public function show($id)
-    {
-        // custom logic before
-
-      //  $content = Contactos::find($id);
-        // cutom logic after
-       // return $content;
-    }
-
 }

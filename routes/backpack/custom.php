@@ -29,4 +29,7 @@ Route::group([
     //Route::get('tests/{id}', [TestsController::class,'edit'])->name('edit.tests');
     //Route::put('tests/{id}', [TestsController::class,'update'])->name('update.tests');
     Route::delete('tests/{id}', [TestsController::class,'destroy'])->name('delete.tests');
+    Route::crud('tests', 'TestsCrudController');
+    Route::crud('testv2', 'Testv2CrudController');
+    Route::crud('examples', 'ExamplesCrudController');
 }); // this should be the absolute last line of this file
