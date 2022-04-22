@@ -64,10 +64,10 @@ class ExamplesCrudController extends CrudController
     {
         CRUD::setValidation(ExamplesRequest::class);
 
-        CRUD::field('id');
+
         CRUD::field('nombre');
         $this->crud->addField([
-            'name' => 'image',
+            'name' => 'imagen',
             'label' => 'Image',
             'type' => 'upload',
             'upload' => true
