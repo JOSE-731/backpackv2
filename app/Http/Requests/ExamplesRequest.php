@@ -25,7 +25,7 @@ class ExamplesRequest extends FormRequest
     public function rules()
     {
         return [
-             'imagen' => 'required'
+             'imagen' => 'sometimes|required'
         ];
     }
 
