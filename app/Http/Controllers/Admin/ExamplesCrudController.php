@@ -62,7 +62,7 @@ class ExamplesCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-       // CRUD::setValidation(ExamplesRequest::class);
+        CRUD::setValidation(ExamplesRequest::class);
 
 
         CRUD::field('nombre');
